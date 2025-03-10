@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import urllib3
 
-# Disable SSL warnings
+# Disable SSL warnings - should be temp for prod environments
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # List of URLs to scrape
@@ -11,7 +11,6 @@ urls = [
     'https://www.news4jax.com/news/'
     # Add more URLs as needed
 ]
-
 # Function to scrape titles from a given URL
 def scrape_titles(url):
     try:
@@ -28,6 +27,7 @@ def scrape_titles(url):
         # Print the titles
         for title in titles:
             print(title.get_text())
+            print(' ')
 
     except requests.exceptions.RequestException as e:
         # Handle any requests exceptions (e.g., network issues, invalid URL, etc.)
